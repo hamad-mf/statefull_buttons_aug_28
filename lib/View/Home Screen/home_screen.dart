@@ -126,7 +126,22 @@ class _HomeScreenState extends State<HomeScreen> {
                 );
               },
               child: Text("Alert")),
-          ElevatedButton(onPressed: () {}, child: Text("bottom sheet")),
+          ElevatedButton(
+              onPressed: () {
+                showModalBottomSheet(
+                    isScrollControlled: true,
+                    context: context,
+                    builder: (context) => StatefulBuilder(
+                          builder: (context, setBottomState) => Checkbox(
+                              value: a,
+                              onChanged: (value) {
+                                a = value;
+                                print(a);
+                                setState(() {});
+                              }),
+                        ));
+              },
+              child: Text("bottom sheet")),
         ]),
       ),
     );
