@@ -95,7 +95,38 @@ class _HomeScreenState extends State<HomeScreen> {
               dropvalue = value;
               setState(() {});
             },
-          )
+          ),
+          ExpansionTile(
+            title: Text("my tile"),
+            backgroundColor: Colors.blue,
+            collapsedBackgroundColor: Colors.green,
+            children: [
+              Container(
+                height: 200,
+                color: Colors.red,
+              )
+            ],
+          ),
+          ElevatedButton(
+              onPressed: () {
+                showDialog(
+                  context: context,
+                  builder: (context) => AlertDialog(
+                    title: Text("Exit"),
+                    content: Text("Do you want to Exit"),
+                    actions: [
+                      ElevatedButton(onPressed: () {}, child: Text("Yes")),
+                      ElevatedButton(
+                          onPressed: () {
+                            Navigator.pop(context);
+                          },
+                          child: Text("No"))
+                    ],
+                  ),
+                );
+              },
+              child: Text("Alert")),
+          ElevatedButton(onPressed: () {}, child: Text("bottom sheet")),
         ]),
       ),
     );
