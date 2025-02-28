@@ -30,6 +30,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+     final List<String> items = ["Item 1", "Item 2", "Item 3", "Item 4"];
+    String? selectedItem; // To store the selected item
     return Scaffold(
       body: Center(
         child: Column(mainAxisAlignment: MainAxisAlignment.center, children: [
@@ -142,6 +144,35 @@ class _HomeScreenState extends State<HomeScreen> {
                         ));
               },
               child: Text("bottom sheet")),
+
+
+
+
+
+
+
+
+
+
+
+
+
+              DropdownButton<String>(
+                  value: selectedItem,
+                  hint: Text("select an item"),
+                  icon: Icon(Icons.arrow_drop_down),
+                  onChanged: (String? newvalue) {
+                    setState(() {
+                      selectedItem = newvalue;
+                    });
+                  },
+                  items: items.map<DropdownMenuItem<String>>((String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Text(value),
+                    );
+                  }).toList(),
+                )
         ]),
       ),
     );
